@@ -25,7 +25,7 @@ body {
                         'header'
                         'main'
                         'footer';
-  grid-template-rows: 0.3rem 4rem 1fr 2.5rem;
+  grid-template-rows: 0.3rem 8rem 1fr 2.5rem;
   height: 100vh;
   width: 100vw;
   max-width: 80rem;
@@ -50,7 +50,7 @@ header {
   align-items: center;
   padding: 0 1.5rem;
 
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 a {
@@ -60,6 +60,11 @@ a {
 }
 a:hover {
   color: var(--accent-color-light);
+}
+
+#site-logo {
+  width: 5rem;
+  margin-right: 2rem;
 }
 
 #site-name {
@@ -104,4 +109,9 @@ footer {
 
   font-family: 'Roboto', sans-serif;
   font-size: 1.2rem;
+}
+
+.valign {
+  display: flex;
+  align-items: center;
 }
