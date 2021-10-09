@@ -102,6 +102,50 @@ a:hover {
   color: var(--text-color-light);
 }
 
+.darkModeToggle {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+#dark-mode {
+  display: none;
+}
+.darkModeToggle__sun {
+  width: 1.6rem;
+  color: var(--text-color-light);
+  fill: currentColor;
+}
+.darkModeToggle__moon {
+  width: 1.6rem;
+  color: var(--text-color-light);
+  fill: currentColor;
+  margin-bottom: 2px;
+}
+.darkModeToggle__control {
+  width: 3.2rem;
+  height: 1.4rem;
+  border-radius: 0.7rem;
+  position: relative;
+  background: var(--text-color-light);
+  cursor: pointer;
+  margin: 0 0.1rem 0 0.5rem;
+}
+.darkModeToggle__control::after {
+  content: ' ';
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  position: absolute;
+  left: -1px;
+  top: -3px;
+  background: var(--text-color-mid);
+  transition: left 0.25s ease;
+}
+#dark-mode:checked + .darkModeToggle__control::after {
+  left: 1.3rem;
+}
+
 #site-nav {
   margin-left: auto;
 }

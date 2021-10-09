@@ -20,7 +20,7 @@
 
   <header>
     <a id="site-name" class="valign" href="/">
-      <a id="site-logo" href="/"></>
+      <div id="site-logo"></div>
       <span class="sr-only">Grawlix</span>
     </a>
 
@@ -31,7 +31,20 @@
       <a href="#contact">Contact</a>
     </nav>
 
-    <!-- TODO - dark mode toggle -->
+    <label class="darkModeToggle" for="dark-mode">
+      <div class="darkModeToggle__sun">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195.147 195.141" overflow="visible" xml:space="preserve">
+          <path d="m170.926 86.106 24.222 11.111s-29.556 11.332-28.001 10.888M24.222 109.036 0 97.925s29.556-11.333 28-10.888M86.913 24.222 98.024 0s11.333 29.556 10.888 28M108.234 170.919l-11.111 24.222s-11.332-29.556-10.888-28" />
+          <path d="m141.681 38.055 24.982-9.271s-12.885 28.912-12.1 27.499M54.159 158.004l-24.984 9.271s12.886-28.912 12.1-27.498M38.515 53.703l-9.271-24.985s28.913 12.886 27.499 12.101M157.323 142.357l9.27 24.984s-28.912-12.887-27.498-12.101" />
+          <path d="M97.919 23.029c-41.421 0-75 33.579-75 75 0 41.42 33.579 75 75 75 41.422 0 75-33.58 75-75 0-41.421-33.578-75-75-75zm0 140.001c-35.898 0-65-29.101-65-65 0-35.898 29.102-65 65-65s65 29.102 65 65c0 35.899-29.102 65-65 65z" />
+        </svg>
+      </div>
+      <input id="dark-mode" type="checkbox"/> 
+      <div class="darkModeToggle__control"></div>
+      <div class="darkModeToggle__moon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 718 680" width="100%" height="100%" overflow="visible" xml:space="preserve"><path d="M522.421 98.687C570.629 151.917 600 222.527 600 300c0 165.686-134.314 300-300 300-36.724 0-71.9-6.61-104.42-18.687C250.471 641.923 329.787 680 418 680c165.686 0 300-134.314 300-300 0-128.962-81.378-238.906-195.579-281.313z"/></svg>
+      </div>
+    </label>
   </header>
 
   <main>
@@ -43,7 +56,8 @@
     <section id="products">
       <h2>Products</h2>
       <h3>Isthmus</h3>
-      <p><em>Isthmus</em> is a software development platform that can be thought of as a Management System that builds Content Management Systems: or CMSMS. It was born from a need seen in the enterprise space for highly customized CMSes often having to be built over long periods of time at great cost and effort. More information will become available as the project progresses. Use the form below to subscribe for updates related to Isthmus.</p>
+      <p><em>Isthmus</em> is a software development platform that can be thought of as a Management System for Content Management Systems: a CMSMS. It was born from a need seen repeatedly in the enterprise space for highly customized CMSes &mdash; often having to be built over long periods of time at great cost and effort.</p>
+      <p>More information will become available as the project progresses. Use the form below to subscribe for updates related to Isthmus.</p>
       <div>
         SUBSCRIBE FORM HERE
       </div>
