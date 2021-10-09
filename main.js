@@ -5,9 +5,13 @@
 
   const progress = document.querySelector('#progress')
   const main = document.querySelector('main')
-
   main.addEventListener('scroll', updateProgress)
   main.dispatchEvent(new Event('scroll'))
+
+  const navMenu = document.querySelector('#site-nav');
+  navMenu.addEventListener('click', updateNavMenu);
+
+  updateNavMenu();
 
   function updateProgress (evt) {
     const { target } = evt
@@ -15,6 +19,20 @@
     const position = (clientHeight + scrollTop) / scrollHeight
     const width = 100 * bound(0, 1, position)
     progress.style.width = `${width}%`
+  }
+
+  function updateNavMenu () {
+    requestAnimationFrame(() => {
+      navMenu.querySelectorAll('a').forEach(link => {
+        if (link.hash === location.hash) {
+          link.classList.add('active');
+        } else if (link.hash === '#about' && !location.hash) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    });
   }
 
   function bound (min, max, value) {
