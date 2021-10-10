@@ -1,6 +1,7 @@
 :root {
   --fg-color: #f7f7f9;
   --bg-color: #f0f0f2;
+  --layout-separation-color: #f4f4f6;
   --text-color: #22222a;
   --text-color-mid: #55555f;
   --text-color-light: #88888f;
@@ -18,6 +19,7 @@
 html.dark {
   --fg-color: #18181a;
   --bg-color: #121214;
+  --layout-separation-color: #151519;
   --text-color: #fdfdff;
   --text-color-mid: #dddddf;
   --text-color-light: #aaaaac;
@@ -93,6 +95,17 @@ a:hover {
   background: no-repeat var(--site-logo);
 }
 
+@media screen and (max-width: 500px) {
+  body {
+    grid-template-rows: 0.3rem 6.5rem 1fr 2.5rem;
+  }
+
+  #site-logo {
+    height: 5rem;
+    width: 4rem;
+  }
+}
+
 #site-name {
   font-size: 2.4rem;
   color: var(--text-color);
@@ -112,14 +125,15 @@ a:hover {
 }
 .darkModeToggle__sun {
   width: 1.6rem;
+  height: 1.6rem;
   color: var(--text-color-light);
   fill: currentColor;
 }
 .darkModeToggle__moon {
-  width: 1.6rem;
+  width: 1.3rem;
+  height: 1.3rem;
   color: var(--text-color-light);
   fill: currentColor;
-  margin-bottom: 2px;
 }
 .darkModeToggle__control {
   width: 3.2rem;
@@ -128,7 +142,7 @@ a:hover {
   position: relative;
   background: var(--text-color-light);
   cursor: pointer;
-  margin: 0 0.1rem 0 0.5rem;
+  margin: 0 0.5rem 0 0.5rem;
 }
 .darkModeToggle__control::after {
   content: ' ';
@@ -168,6 +182,8 @@ main {
   grid-area: main;
   overflow: auto;
   padding: 1.5rem 1.5rem;
+  border: solid 1px var(--layout-separation-color);
+  border-width: 1px 0;
 }
 
 section {
