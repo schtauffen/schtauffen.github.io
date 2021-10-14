@@ -8,12 +8,24 @@
   --accent-color: #2E8B57;
   --accent-color-light: #50C878;
   --shadow-color: #d8d8df;
+  --shadow-color-dark: #00000299;
+  --invalid-color: #dd0005;
+  --text-color-disabled: #333337;
+  --disabled-color: #666669;
 
   --ff-default: 'Open Sans', sans-serif;
   --ff-brand: 'Lato', sans-serif;
   /* font-family: 'Roboto', sans-serif; */
 
   --site-logo: url(/assets/grawlix_short_optimized.svg);
+
+  --spacing-xs: 0.5rem;
+  --spacing: 0.8rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2.5rem;
+
+  --fs-small: 1.4rem;
+  --fs-regular: 1.6rem;
 }
 
 html.dark {
@@ -25,6 +37,8 @@ html.dark {
   --text-color-light: #aaaaac;
   --shadow-color: #000002;
   --site-logo: url(/assets/grawlix_short_optimized__darkmode.svg);
+  --text-color-disabled: #666669;
+  --disabled-color: #333337;
 }
 
 * {
@@ -41,7 +55,7 @@ html {
 body {
   transition: opacity 200ms ease-in;
   background-color: var(--fg-color);
-  font-size: 1.6rem;
+  font-size: var(--fs-regular);
   color: var(--text-color);
 
   display: grid;
@@ -220,6 +234,83 @@ footer {
 .valign {
   display: flex;
   align-items: center;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: 1.9rem;
+  margin-bottom: var(--spacing-lg);
+}
+.form__label {
+  color: var(--text-color-light);
+  font-size: var(--fs-regular);
+  position: absolute;
+  top: 1.9rem;
+  transition: top 0.1s ease-out 0s, font-size 0.1s ease-out;
+}
+.form__input {
+  outline: 0;
+  color: var(--text-color);
+  caret-color: var(--text-color);
+  background: transparent;
+  border: solid 1px var(--text-color-light);
+  border-radius: 0;
+  border-width: 0 0 1px 0;
+  padding: var(--spacing) 0;
+  transition: border-color 0.3s ease-in;
+}
+.form__textarea {
+  height: 6rem;
+  min-height: 6rem;
+  outline: 0;
+  color: var(--text-color);
+  caret-color: var(--text-color);
+  background: transparent;
+  border: solid 1px var(--text-color-light);
+  border-radius: 0;
+  border-width: 0 0 1px 0;
+  min-width: 100%;
+  max-width: 100%;
+  padding: var(--spacing) 0;
+  transition: border-color 0.3s ease-in;
+}
+.form__input:active + .form__label,
+.form__input:focus + .form__label,
+.form__input.dirty + .form__label,
+.form__textarea:active + .form__label,
+.form__textarea:focus + .form__label,
+.form__textarea.dirty + .form__label,
+.no-script .form__label {
+  font-size: var(--fs-small);
+  top: 0;
+}
+.form__textarea:active,
+.form__textarea:focus,
+.form__input:active,
+.form__input:focus {
+  border-color: var(--bg-color);
+}
+.form__input:invalid,
+.form__textarea:invalid {
+  border-color: var(--invalid-color)
+}
+
+.form__submit {
+  border: none;
+  color: var(--text-color);
+  background-color: var(--accent-color);;
+  padding: var(--spacing) var(--spacing-lg);
+  box-shadow: 1px 1px 2px var(--shadow-color-dark);
+}
+.form__submit:not(:disabled):hover,
+.form__submit:not(:disabled):focus {
+  background-color: var(--accent-color-light)
+}
+.form__submit:disabled {
+  color: var(--text-color-disabled);
+  background-color: var(--disabled-color);
 }
 
 /* source: https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034 */

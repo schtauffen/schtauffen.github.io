@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?7bc4e5ef-45aa-4ef7-976f-42803015b36f">
 </head>
-<body>
+<body class="no-script">
 
   <div id="progress-bar">
     <div id="progress"></div>
@@ -32,7 +32,7 @@
       <a class="active" href="#about">About</a>
       <a href="#products">Products</a>
       <!-- <a href="#blog">Blog</a> -->
-      <!-- <a href="#contact">Contact</a> -->
+      <a href="#contact">Contact</a>
     </nav>
 
     <label class="darkModeToggle" for="dark-mode">
@@ -46,7 +46,7 @@
   <main>
     <section id="about">
       <h2>About</h2>
-      <p>Grawlix is a software and technology consulting company that specializes in enterprise-grade web applications. It was founded in October 2019 by experienced software consultant, Zach Dahl.</p>
+      <p>Grawlix is a software and technology consulting company that specializes in enterprise-grade web applications. It was founded in October 2019 by experienced software consultant Zach Dahl.</p>
     </section>
 
     <section id="products">
@@ -56,16 +56,25 @@
       <p>More information will become available as the project progresses.</p>
     </section>
 
-    <!-- <section id="contact">
+    <section id="contact">
       <h2>Contact</h2>
-      <div>
-        CONTACT FORM HERE
-      </div>
-    </section> -->
+      <form class="form" name="contactForm" onsubmit="return false">
+        <div class="form__field">
+          <input class="form__input" id="f_0" name="f_0" type="email"/>
+          <label class="form__label" for="f_0">Email</label>
+        </div>
+
+        <div class="form__field">
+          <textarea class="form__textarea" id="f_2" name="f_2" type="text"></textarea>
+          <label class="form__label" for="f_2">Message</label>
+        </div>
+
+        <button class="form__submit" type="submit">Send</button>
+      </form>
+    </section>
   </main>
 
   <footer>&copy; 2019-2021 Grawlix. All rights reserved.</footer>
-
 
   <script src="main.js?7bc4e5ef-45aa-4ef7-976f-42803015b36f"></script>
 </body>

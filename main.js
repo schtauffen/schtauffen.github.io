@@ -4,6 +4,7 @@
   window.addEventListener('load', () => {
     updateNavMenu();
     updateDarkMode();
+    document.querySelector('.no-script').classList.remove('no-script');
     document.body.style.opacity = 1
   })
 
