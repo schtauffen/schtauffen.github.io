@@ -133,6 +133,7 @@ a:hover {
   display: flex;
   align-items: center;
   margin-left: 1rem;
+  cursor: pointer;
 }
 #dark-mode {
   display: none;
@@ -155,7 +156,6 @@ a:hover {
   border-radius: 0.7rem;
   position: relative;
   background: var(--text-color-light);
-  cursor: pointer;
   margin: 0 0.5rem 0 0.5rem;
 }
 .darkModeToggle__control::after {
@@ -236,6 +236,9 @@ footer {
   align-items: center;
 }
 
+.form__verification {
+  display: none;
+}
 .form__field {
   display: flex;
   flex-direction: column;
@@ -277,9 +280,11 @@ footer {
   transition: border-color 0.3s ease-in;
 }
 .form__input:active + .form__label,
+.form__input:hover + .form__label,
 .form__input:focus + .form__label,
 .form__input.dirty + .form__label,
 .form__textarea:active + .form__label,
+.form__textarea:hover + .form__label,
 .form__textarea:focus + .form__label,
 .form__textarea.dirty + .form__label,
 .no-script .form__label {
@@ -293,7 +298,9 @@ footer {
   border-color: var(--bg-color);
 }
 .form__input:invalid,
-.form__textarea:invalid {
+.form__input.invalid,
+.form__textarea:invalid,
+.form__textarea.invalid {
   border-color: var(--invalid-color)
 }
 
@@ -303,6 +310,7 @@ footer {
   background-color: var(--accent-color);;
   padding: var(--spacing) var(--spacing-lg);
   box-shadow: 1px 1px 2px var(--shadow-color-dark);
+  cursor: pointer;
 }
 .form__submit:not(:disabled):hover,
 .form__submit:not(:disabled):focus {

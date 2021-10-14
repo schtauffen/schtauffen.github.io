@@ -14,7 +14,7 @@
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/grawlix_face_64.png">
   <link rel="manifest" href="/manifest.json">
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?7bc4e5ef-45aa-4ef7-976f-42803015b36f">
+  <link rel="stylesheet" href="./styles.css?11c199ab-6ab1-49e3-8031-e0ace283d4a4">
 </head>
 <body class="no-script">
 
@@ -58,16 +58,24 @@
 
     <section id="contact">
       <h2>Contact</h2>
-      <form class="form" name="contactForm" onsubmit="return false">
+      <form id="contactForm" class="form" name="contactForm" onsubmit="return false">
+        <input class="form__verification" type="email" id="email" name="email">
+        <input class="form__verification" type="text" id="f_139a63f4" name="f_139a63f4" value="manymoonsofhappiness">
+
         <div class="form__field">
-          <input class="form__input" id="f_0" name="f_0" type="email"/>
-          <label class="form__label" for="f_0">Email</label>
+          <input class="form__input" id="f_7990c819" name="f_7990c819" type="email"/>
+          <label class="form__label" for="f_7990c819">Email</label>
         </div>
 
         <div class="form__field">
-          <textarea class="form__textarea" id="f_2" name="f_2" type="text"></textarea>
-          <label class="form__label" for="f_2">Message</label>
+          <textarea class="form__textarea" id="f_83850abb" name="f_83850abb" type="text"></textarea>
+          <label class="form__label" for="f_83850abb">Message</label>
         </div>
+
+        <!--
+        // captcha (not verified backend)
+        fleet-lightning-329002
+        -->
 
         <button class="form__submit" type="submit">Send</button>
       </form>
@@ -76,6 +84,14 @@
 
   <footer>&copy; 2019-2021 Grawlix. All rights reserved.</footer>
 
-  <script src="main.js?7bc4e5ef-45aa-4ef7-976f-42803015b36f"></script>
+  <script>
+    function validateAction(action, fn) {
+      grecaptcha.enterprise.ready(function() {
+          grecaptcha.enterprise.execute('6LelDrscAAAAAIr2LxTylEER74o_3LACbMErpR8l', { action }).then(fn);
+      });
+    }
+  </script>
+  <script src="main.js?11c199ab-6ab1-49e3-8031-e0ace283d4a4"></script>
+  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LelDrscAAAAAIr2LxTylEER74o_3LACbMErpR8l"></script>
 </body>
 </html>
