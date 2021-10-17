@@ -9,9 +9,10 @@
   --accent-color-light: #50C878;
   --shadow-color: #d8d8df;
   --shadow-color-dark: #00000299;
-  --invalid-color: #dd0005;
+  --invalid-color: #aa0005;
   --text-color-disabled: #333337;
   --disabled-color: #666669;
+  --message-color: #d4d4d7;
 
   --ff-default: 'Open Sans', sans-serif;
   --ff-brand: 'Lato', sans-serif;
@@ -39,6 +40,7 @@ html.dark {
   --site-logo: url(/assets/grawlix_short_optimized__darkmode.svg);
   --text-color-disabled: #666669;
   --disabled-color: #333337;
+  --message-color: #222227;
 }
 
 * {
@@ -304,7 +306,12 @@ footer {
   border-color: var(--invalid-color)
 }
 
+.form__submitBar {
+  display: flex;
+}
 .form__submit {
+  font-size: var(--fs-regular);
+  flex: 0 0 auto;
   border: none;
   color: var(--text-color);
   background-color: var(--accent-color);;
@@ -319,6 +326,26 @@ footer {
 .form__submit:disabled {
   color: var(--text-color-disabled);
   background-color: var(--disabled-color);
+}
+.form__submitMessage {
+  font-size: var(--fs-regular);
+  transition: opacity 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  flex: 1 0 auto;
+  border-radius: 0.4rem;
+  margin-left: var(--spacing-lg);
+  padding: 0 var(--spacing);
+  opacity: 1;
+  background-color: var(--message-color);
+  box-shadow: 1px 1px 2px var(--shadow-color-dark);
+}
+.form__submitMessage.error {
+  background-color: var(--invalid-color);
+  color: white;
+}
+.form__submitMessage.fade {
+  opacity: 0;
 }
 
 /* source: https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034 */

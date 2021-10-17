@@ -1,15 +1,18 @@
 (function () {
   const IS_DARKMODE_KEY = "@@grawlix/is_darkmode";
   const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const WORKER_URL = "http://127.0.0.1:8787";
 
+  const form = document.querySelector('#contactForm');
   const email = document.querySelector('#f_7990c819');
   const message = document.querySelector('#f_83850abb');
+  const submit = document.querySelector('.form__submit');
 
   window.addEventListener('load', () => {
     updateNavMenu();
     updateDarkMode();
     document.querySelector('.no-script').classList.remove('no-script');
-    document.querySelector('#contactForm').onsubmit = onSubmitContactform;
+    form.onsubmit = onSubmitContactform;
     email.onkeyup = validateContactFormEmail;
     message.onkeyup = validateContactFormMessage;
     document.body.style.opacity = 1
@@ -25,6 +28,22 @@
 
   const darkModeToggle = document.querySelector('#dark-mode');
   darkModeToggle.addEventListener('click', toggleDarkMode);
+
+  const submitBar = document.querySelector('.form__submitBar');
+  const submitMessageTemplate = document.createElement('template');
+  submitMessageTemplate.innerHTML = '<div class="form__submitMessage fade"></div>';
+
+  function displayMessage(message, isError = false) {
+    const el = submitMessageTemplate.content.querySelector('.form__submitMessage').cloneNode();
+    if (isError) {
+      el.classList.add('error');
+    }
+    el.textContent = message;
+    submitBar.appendChild(el);
+    requestAnimationFrame(() => { el.classList.remove('fade'); });
+    setTimeout(() => { el.classList.add('fade'); }, 4000);
+    setTimeout(() => { submitBar.removeChild(el); }, 4200);
+  }
 
   function validateContactFormEmail() {
     if (email.value) {
@@ -79,16 +98,33 @@
       return false;
     }
 
+    const formData = new FormData(form);
     // validateAction('contactform', token => {
-      // POST to submit endpoint
-      // THEN if successful:
-      email.value = '';
-      email.classList.remove('dirty');
-      message.value = '';
-      message.classList.remove('dirty');
-      // display "your message was submitted message"
-      // after 8s, delete message
-      // ELSE error message for 8s
+    submit.disabled = true;
+    email.disabled = true;
+    message.disabled = true;
+
+    fetch(`${WORKER_URL}/inquiry`, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData,
+    }).then(response => new Promise(resolve => setTimeout(() => resolve(response), 2000))).then(response => {
+      if (response.ok) {
+        email.value = '';
+        email.classList.remove('dirty');
+        message.value = '';
+        message.classList.remove('dirty');
+        displayMessage('Form submitted.');
+      } else {
+        displayMessage('Failed to submit form.', true);
+      }
+    }).catch(() => {
+      displayMessage('Network failure. Try again soon.', true);
+    }).finally(() => {
+      submit.disabled = false;
+      email.disabled = false;
+      message.disabled = false;
+    });
     // });
 
     return false;
