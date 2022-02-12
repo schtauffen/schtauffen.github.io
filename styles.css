@@ -204,6 +204,10 @@ h3 {
   font-family: var(--ff-brand);
 }
 
+ul {
+  list-style: none;
+}
+
 p {
   margin-bottom: 1rem;
 }
@@ -220,6 +224,10 @@ footer {
 .valign {
   display: flex;
   align-items: center;
+}
+
+.project {
+  padding-bottom: 2rem;
 }
 
 /* source: https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034 */
